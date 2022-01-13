@@ -12,6 +12,8 @@ def get_quote():
   return(quote)
 
 def get_stats(username):
+  if username == '':
+    return 'Please resend your command with your username at the end.\ni.e. $AL stats CheeseTerds'
   response = requests.get("https://api.mozambiquehe.re/bridge?version=5&platform=PC&player="+ username +"&auth=K8kPDUS8O3RknkpNyBCT")
   json_data = json.loads(response.text) #use json_data to access api's dictionaries
   stats = "Name: " + json_data['global']['name'] + "\nRank: " + json_data['global']['rank']['rankName'] + "\n" + json_data['global']['rank']['rankImg']
